@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import ScrollReveal from '@/components/ScrollReveal'
 import ContactForm from '@/components/ContactForm'
 import { WA_LINKS } from '@/lib/constants'
+import PlotterLine from '@/components/PlotterLine'
 
 export const metadata: Metadata = {
   title: 'Contact The Custom ZM — Start Your Order — Lusaka Zambia',
@@ -16,8 +17,9 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <p className="section-label mb-4">Get In Touch</p>
-            <h1 className="headline text-white mb-6" style={{ fontSize: 'clamp(3.5rem, 10vw, 8rem)' }}>
-              START YOUR<br /><span className="text-[#00AAFF]">ORDER.</span>
+            <PlotterLine />
+            <h1 className="headline headline-chrome mb-6" style={{ fontSize: 'clamp(3.5rem, 10vw, 8rem)' }}>
+              START YOUR<br /><span className="text-[var(--steel-bright)]">ORDER.</span>
             </h1>
             <p className="text-[#888] text-lg max-w-xl">
               Every custom piece starts with a conversation. WhatsApp us — tell us what you want, and we&apos;ll make it happen.
@@ -53,7 +55,7 @@ export default function ContactPage() {
                     <p className="section-label mb-2">{item.label}</p>
                     {item.isLink && item.href ? (
                       <a href={item.href} target="_blank" rel="noopener noreferrer"
-                        className="text-[#E0E0E0] text-sm hover:text-[#00AAFF] transition-colors">
+                        className="text-[#E0E0E0] text-sm hover:text-[var(--steel-bright)] transition-colors">
                         {item.value}
                       </a>
                     ) : (
@@ -63,7 +65,7 @@ export default function ContactPage() {
                 ))}
               </div>
 
-              <div className="border border-[rgba(0,170,255,0.15)] bg-[#141414] p-6">
+              <div className="border border-[rgba(157,184,207,0.15)] bg-[#141414] p-6">
                 <p className="section-label mb-4">Quick Order Links</p>
                 <div className="space-y-3">
                   {[
@@ -72,9 +74,9 @@ export default function ContactPage() {
                     { label: 'Portrait Print', link: WA_LINKS.portrait },
                   ].map(item => (
                     <a key={item.label} href={item.link} target="_blank" rel="noopener noreferrer"
-                      className="flex items-center justify-between text-sm text-[#888] hover:text-[#00AAFF] transition-colors py-2 border-b border-[rgba(255,255,255,0.04)] last:border-0">
+                      className="flex items-center justify-between text-sm text-[#888] hover:text-[var(--steel-bright)] transition-colors py-2 border-b border-[rgba(255,255,255,0.04)] last:border-0">
                       <span>Order {item.label}</span>
-                      <span className="text-[#00AAFF]">&rarr;</span>
+                      <span className="text-[var(--steel-bright)]">&rarr;</span>
                     </a>
                   ))}
                 </div>

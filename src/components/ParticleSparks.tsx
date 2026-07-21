@@ -1,13 +1,23 @@
 'use client'
-import { useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { loadSlim } from '@tsparticles/slim'
 import Particles from '@tsparticles/react'
 import type { Engine } from '@tsparticles/engine'
 
 export default function ParticleSparks() {
+  const [enabled, setEnabled] = useState(false)
+
+  useEffect(() => {
+    const finePointer = window.matchMedia('(pointer: fine)').matches
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    setEnabled(finePointer && !reducedMotion)
+  }, [])
+
   const init = useCallback(async (engine: Engine) => {
     await loadSlim(engine)
   }, [])
+
+  if (!enabled) return null
 
   return (
     <Particles
@@ -18,8 +28,8 @@ export default function ParticleSparks() {
         background: { color: { value: 'transparent' } },
         fpsLimit: 60,
         particles: {
-          color: { value: ['#00AAFF', '#33BBFF', '#FFFFFF'] },
-          links: { enable: true, color: '#00AAFF', opacity: 0.15, distance: 100 },
+          color: { value: ['#9DB8CF', '#CBDAE8', '#FFFFFF'] },
+          links: { enable: true, color: '#9DB8CF', opacity: 0.15, distance: 100 },
           move: { enable: true, speed: 1.2, random: true, direction: 'none' },
           number: { value: 60 },
           opacity: { value: { min: 0.3, max: 0.8 } },

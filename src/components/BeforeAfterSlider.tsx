@@ -1,6 +1,11 @@
 'use client'
-import { useRef, useState, useCallback } from 'react'
+import { useRef, useState, useCallback, useLayoutEffect } from 'react'
 import Image from 'next/image'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import InkBloom from './InkBloom'
+
+gsap.registerPlugin(ScrollTrigger)
 
 interface Props {
   beforeSrc: string
@@ -21,6 +26,28 @@ export default function BeforeAfterSlider({ beforeSrc, afterSrc, beforeAlt = 'Be
     setPosition(pct)
   }, [])
 
+  // First-view auto-glide: 30% -> 60% -> 50%, once, then normal drag behavior.
+  useLayoutEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const obj = { p: 50 }
+    const st = ScrollTrigger.create({
+      trigger: el,
+      start: 'top 80%',
+      once: true,
+      onEnter: () => {
+        obj.p = 30
+        setPosition(30)
+        gsap.timeline()
+          .to(obj, { p: 60, duration: 0.9, ease: 'power2.inOut', onUpdate: () => setPosition(obj.p) })
+          .to(obj, { p: 50, duration: 0.7, ease: 'power2.inOut', onUpdate: () => setPosition(obj.p) })
+      },
+    })
+    return () => st.kill()
+  }, [])
+
   const onMouseDown = () => { dragging.current = true }
   const onMouseUp = () => { dragging.current = false }
   const onMouseMove = (e: React.MouseEvent) => { if (dragging.current) updatePosition(e.clientX) }
@@ -38,23 +65,27 @@ export default function BeforeAfterSlider({ beforeSrc, afterSrc, beforeAlt = 'Be
     >
       {/* Before */}
       <div className="absolute inset-0">
-        <Image src={beforeSrc} alt={beforeAlt} fill className="object-cover" />
+        <InkBloom className="absolute inset-0">
+          <Image src={beforeSrc} alt={beforeAlt} fill className="object-cover" />
+        </InkBloom>
         <span className="absolute top-4 left-4 section-label bg-[#0A0A0A]/80 px-3 py-1">Before</span>
       </div>
 
       {/* After — clipped */}
       <div className="absolute inset-0" style={{ clipPath: `inset(0 0 0 ${position}%)` }}>
-        <Image src={afterSrc} alt={afterAlt} fill className="object-cover" />
-        <span className="absolute top-4 right-4 section-label bg-[#00AAFF]/90 text-black px-3 py-1">After</span>
+        <InkBloom className="absolute inset-0">
+          <Image src={afterSrc} alt={afterAlt} fill className="object-cover" />
+        </InkBloom>
+        <span className="absolute top-4 right-4 section-label bg-[var(--steel-bright)]/90 text-black px-3 py-1">After</span>
       </div>
 
       {/* Handle */}
       <div
-        className="absolute top-0 bottom-0 w-[2px] bg-[#00AAFF] z-10"
+        className="absolute top-0 bottom-0 w-[2px] bg-[var(--edge)] z-10"
         style={{ left: `${position}%`, transform: 'translateX(-50%)' }}
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black border-2 border-[#00AAFF] flex items-center justify-center shadow-[0_0_20px_rgba(0,170,255,0.5)]">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="#00AAFF">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black border-2 border-[var(--edge)] flex items-center justify-center shadow-[0_0_20px_var(--edge-glow)]">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--edge)">
             <path d="M5 8l-3-3v2H0v2h2v2l3-3zm6 0l3 3v-2h2V7h-2V5l-3 3z"/>
           </svg>
         </div>

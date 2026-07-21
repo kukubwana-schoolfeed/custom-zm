@@ -5,9 +5,9 @@
   --color-black-soft: #111111;
   --color-card-bg: #141414;
   --color-card-hover: #1C1C1C;
-  --color-blue: #00AAFF;
-  --color-blue-bright: #33BBFF;
-  --color-blue-dark: #0088CC;
+  --color-steel: #9DB8CF;
+  --color-steel-bright: #CBDAE8;
+  --color-edge: #00AAFF;
   --color-grey: #888888;
   --font-display: var(--font-bebas);
   --font-body: var(--font-montserrat);
@@ -18,15 +18,22 @@
   --black-soft:     #111111;
   --card-bg:        #141414;
   --card-hover:     #1C1C1C;
-  --blue:           #00AAFF;
-  --blue-bright:    #33BBFF;
-  --blue-dark:      #0088CC;
-  --blue-glow:      rgba(0, 170, 255, 0.15);
-  --blue-glow-soft: rgba(0, 170, 255, 0.06);
   --white:          #FFFFFF;
   --grey:           #888888;
-  --border:         rgba(0, 170, 255, 0.15);
-  --border-bright:  rgba(0, 170, 255, 0.4);
+
+  /* chrome-first system — from the logo's steel undertone */
+  --steel:          #9DB8CF;
+  --steel-bright:   #CBDAE8;
+  --steel-dim:      rgba(157, 184, 207, 0.14);
+  --chrome-gradient: linear-gradient(180deg, #F5F8FB 0%, #C7D3DE 38%, #8296AA 50%, #E9EFF5 62%, #9FAFC2 100%);
+
+  /* neon survives ONLY as the precision edge */
+  --edge:           #00AAFF;
+  --edge-glow:      rgba(0, 170, 255, 0.25);
+  --edge-glow-soft: rgba(0, 170, 255, 0.08);
+
+  --border:         rgba(157, 184, 207, 0.16);
+  --border-bright:  rgba(157, 184, 207, 0.45);
 }
 
 html { scroll-behavior: smooth; }
@@ -39,13 +46,18 @@ body {
 
 @keyframes neonPulse {
   0%, 100% {
-    filter: drop-shadow(0 0 8px #00AAFF) drop-shadow(0 0 20px #00AAFF);
-    opacity: 0.06;
+    filter: drop-shadow(0 0 6px var(--steel)) drop-shadow(0 0 14px var(--steel-dim));
+    opacity: 0.05;
   }
   50% {
-    filter: drop-shadow(0 0 15px #00AAFF) drop-shadow(0 0 40px #00AAFF) drop-shadow(0 0 80px #00AAFF);
-    opacity: 0.10;
+    filter: drop-shadow(0 0 10px var(--steel)) drop-shadow(0 0 24px var(--steel-dim));
+    opacity: 0.08;
   }
+}
+
+@keyframes chromeSheen {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
 }
 
 @keyframes floatUp {
@@ -83,17 +95,18 @@ body {
 }
 
 .neon-border {
-  border: 1px solid #00AAFF;
-  box-shadow: 0 0 10px rgba(0,170,255,0.3), inset 0 0 10px rgba(0,170,255,0.05);
-  transition: box-shadow 0.3s ease;
+  border: 1px solid var(--border);
+  box-shadow: inset 0 0 10px var(--steel-dim);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .neon-border:hover {
-  box-shadow: 0 0 20px rgba(0,170,255,0.5), 0 0 40px rgba(0,170,255,0.2), inset 0 0 20px rgba(0,170,255,0.05);
+  border-color: var(--edge);
+  box-shadow: 0 0 20px var(--edge-glow-soft), inset 0 0 10px var(--steel-dim);
 }
 
 .btn-primary {
-  background: #00AAFF;
-  color: #000;
+  background: #EEF3F8;
+  color: #0A0A0A;
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.15em;
@@ -106,14 +119,13 @@ body {
   text-decoration: none;
 }
 .btn-primary:hover {
-  background: #33BBFF;
-  box-shadow: 0 0 40px rgba(0,170,255,0.5);
+  box-shadow: 0 0 30px var(--edge-glow);
   transform: translateY(-2px);
 }
 
 .btn-outline {
-  border: 1px solid #00AAFF;
-  color: #00AAFF;
+  border: 1px solid var(--steel);
+  color: var(--steel);
   background: transparent;
   padding: 16px 40px;
   font-weight: 700;
@@ -126,16 +138,16 @@ body {
   text-decoration: none;
 }
 .btn-outline:hover {
-  background: #00AAFF;
+  background: var(--steel-bright);
+  border-color: var(--steel-bright);
   color: #000;
-  box-shadow: 0 0 30px rgba(0,170,255,0.4);
 }
 
 .section-label {
   font-size: 0.7rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #00AAFF;
+  color: var(--steel);
   font-weight: 600;
 }
 
@@ -146,7 +158,35 @@ body {
   line-height: 0.95;
 }
 
+.headline-chrome {
+  background: var(--chrome-gradient);
+  background-size: 200% 100%;
+  background-position: -100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.headline-chrome.sheen-play {
+  animation: chromeSheen 2.4s ease-out forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .headline-chrome { background-position: 0 0; }
+  .headline-chrome.sheen-play { animation: none; }
+}
+
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #0A0A0A; }
-::-webkit-scrollbar-thumb { background: #0088CC; border-radius: 2px; }
-::selection { background: rgba(0,170,255,0.3); color: white; }
+::-webkit-scrollbar-thumb { background: var(--steel); border-radius: 2px; }
+::selection { background: var(--steel-dim); color: white; }
+
+/* Belt-and-suspenders: JS guards skip GSAP timelines and looping keyframes for
+   reduced-motion users, but this catches any inline `animation` style too —
+   !important in a stylesheet is the one case that beats an inline style. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

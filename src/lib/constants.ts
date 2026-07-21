@@ -53,21 +53,21 @@ export const TESTIMONIALS = [
   }
 ]
 
-// Curated laptop images — clean filenames without double-dots
+// Curated laptop images
 export const LAPTOP_GALLERY_IMAGES = [
   12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 25, 26, 27, 28, 30, 31, 32, 33, 34, 35, 36, 37, 38, 40, 41, 42, 43
-].map(n => `/assets/laptop/custom-laptop-wrap-lusaka-zambia-${n}.jpg`)
+].map(n => `/assets/laptop/custom-laptop-wrap-lusaka-zambia-${String(n).padStart(2, '0')}.webp`)
 
-export const LAPTOP_HERO_IMAGE = '/assets/laptop/custom-laptop-wrap-lusaka-zambia-22.jpg'
-export const LAPTOP_BEFORE_IMAGE = '/assets/laptop/custom-laptop-wrap-lusaka-zambia-13.jpg'
-export const LAPTOP_AFTER_IMAGE  = '/assets/laptop/custom-laptop-wrap-lusaka-zambia-30.jpg'
+export const LAPTOP_HERO_IMAGE = '/assets/laptop/custom-laptop-wrap-lusaka-zambia-22.webp'
+export const LAPTOP_BEFORE_IMAGE = '/assets/laptop/custom-laptop-wrap-lusaka-zambia-13.webp'
+export const LAPTOP_AFTER_IMAGE  = '/assets/laptop/custom-laptop-wrap-lusaka-zambia-30.webp'
 
-// Phone covers — URL-encoded filenames with parentheses
+// Phone covers
 export const COVER_GALLERY_IMAGES = [
   5,6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22,23,24,25,26,27,28,30,31,32,34,36,38,40,42,44,46,48
-].map(n => `/assets/cover/custom-phone-cover-lusaka-zambia%20(${n}).jpg`)
+].map(n => `/assets/cover/custom-phone-cover-lusaka-zambia-${String(n).padStart(2, '0')}.webp`)
 
-// Portraits — encoded filenames (folder name is 'potraits' — preserve as-is)
+// Portraits
 export const PORTRAIT_GALLERY_IMAGES = [
   1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35
-].map(n => `/assets/potraits/portrait-print-lusaka-zambia%20(${n}).jpg`)
+].map(n => `/assets/portraits/portrait-print-lusaka-zambia-${String(n).padStart(2, '0')}.webp`)

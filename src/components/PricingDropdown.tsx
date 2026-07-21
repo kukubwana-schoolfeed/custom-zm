@@ -19,26 +19,26 @@ export default function PricingDropdown({ title, items, defaultOpen = false, lin
   const [open, setOpen] = useState(defaultOpen)
 
   return (
-    <div className="border border-[rgba(0,170,255,0.2)] bg-[#111111] overflow-hidden transition-all duration-300 hover:border-[rgba(0,170,255,0.4)]">
+    <div className="border border-[rgba(157,184,207,0.2)] bg-[#111111] overflow-hidden transition-all duration-300 hover:border-[rgba(157,184,207,0.4)]">
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between px-6 py-5 text-left"
       >
-        <span className="font-display headline text-xl text-white tracking-wider">{title}</span>
+        <span className="font-display headline headline-chrome text-xl tracking-wider">{title}</span>
         <ChevronDown
           size={20}
-          className="text-[#00AAFF] transition-transform duration-300 flex-shrink-0"
+          className="text-[var(--steel)] transition-transform duration-300 flex-shrink-0"
           style={{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}
         />
       </button>
 
       {open && (
         <div className="px-6 pb-6">
-          <div className="border-t border-[rgba(0,170,255,0.1)] pt-4 space-y-3">
+          <div className="border-t border-[rgba(157,184,207,0.1)] pt-4 space-y-3">
             {items.map((item, i) => (
               <div key={i} className="flex items-center justify-between">
                 <span className="text-[#E0E0E0] text-sm">{item.name}</span>
-                <span className="text-[#00AAFF] font-semibold text-base ml-4 flex-shrink-0">K{item.price}</span>
+                <span className="text-[var(--steel-bright)] font-semibold text-base ml-4 flex-shrink-0">K{item.price}</span>
               </div>
             ))}
           </div>

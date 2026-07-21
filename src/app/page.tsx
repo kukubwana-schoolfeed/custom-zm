@@ -5,6 +5,8 @@ import ParticleSparks from '@/components/ParticleSparks'
 import Ticker from '@/components/Ticker'
 import BeforeAfterSlider from '@/components/BeforeAfterSlider'
 import ScrollReveal from '@/components/ScrollReveal'
+import WrapReveal from '@/components/WrapReveal'
+import PlotterLine from '@/components/PlotterLine'
 import { WA_LINKS, TESTIMONIALS, LAPTOP_HERO_IMAGE, LAPTOP_BEFORE_IMAGE, LAPTOP_AFTER_IMAGE } from '@/lib/constants'
 
 export const metadata: Metadata = {
@@ -13,16 +15,16 @@ export const metadata: Metadata = {
 }
 
 const MARQUEE = [
-  '/assets/laptop/custom-laptop-wrap-lusaka-zambia-12.jpg',
-  '/assets/cover/custom-phone-cover-lusaka-zambia%20(10).jpg',
-  '/assets/potraits/portrait-print-lusaka-zambia%20(5).jpg',
-  '/assets/laptop/custom-laptop-wrap-lusaka-zambia-20.jpg',
-  '/assets/cover/custom-phone-cover-lusaka-zambia%20(15).jpg',
-  '/assets/potraits/portrait-print-lusaka-zambia%20(12).jpg',
-  '/assets/laptop/custom-laptop-wrap-lusaka-zambia-25.jpg',
-  '/assets/cover/custom-phone-cover-lusaka-zambia%20(22).jpg',
-  '/assets/potraits/portrait-print-lusaka-zambia%20(20).jpg',
-  '/assets/laptop/custom-laptop-wrap-lusaka-zambia-35.jpg',
+  '/assets/laptop/custom-laptop-wrap-lusaka-zambia-12.webp',
+  '/assets/cover/custom-phone-cover-lusaka-zambia-10.webp',
+  '/assets/portraits/portrait-print-lusaka-zambia-05.webp',
+  '/assets/laptop/custom-laptop-wrap-lusaka-zambia-20.webp',
+  '/assets/cover/custom-phone-cover-lusaka-zambia-15.webp',
+  '/assets/portraits/portrait-print-lusaka-zambia-12.webp',
+  '/assets/laptop/custom-laptop-wrap-lusaka-zambia-25.webp',
+  '/assets/cover/custom-phone-cover-lusaka-zambia-22.webp',
+  '/assets/portraits/portrait-print-lusaka-zambia-20.webp',
+  '/assets/laptop/custom-laptop-wrap-lusaka-zambia-35.webp',
 ]
 
 const SERVICE_CARDS = [
@@ -32,7 +34,7 @@ const SERVICE_CARDS = [
     desc: 'Premium vinyl wraps precision-cut for your exact laptop model. Our designs or yours.',
     cta: 'Wrap Your Laptop',
     waLink: WA_LINKS.laptop,
-    img: '/assets/laptop/custom-laptop-wrap-lusaka-zambia-22.jpg',
+    img: '/assets/laptop/custom-laptop-wrap-lusaka-zambia-22.webp',
     from: 'From K100',
   },
   {
@@ -41,7 +43,7 @@ const SERVICE_CARDS = [
     desc: 'Sublimation-printed custom covers for all major phone models. Bold. Vivid. Yours.',
     cta: 'Cover Your Phone',
     waLink: WA_LINKS.phone,
-    img: '/assets/cover/custom-phone-cover-lusaka-zambia%20(12).jpg',
+    img: '/assets/cover/custom-phone-cover-lusaka-zambia-12.webp',
     from: 'K200 All Models',
   },
   {
@@ -50,7 +52,7 @@ const SERVICE_CARDS = [
     desc: 'Gallery-quality portrait prints in any size. Birthdays, weddings, graduations, memorials.',
     cta: 'Order A Print',
     waLink: WA_LINKS.portrait,
-    img: '/assets/potraits/portrait-print-lusaka-zambia%20(8).jpg',
+    img: '/assets/portraits/portrait-print-lusaka-zambia-08.webp',
     from: 'From K180',
   },
 ]
@@ -63,7 +65,7 @@ export default function Home() {
         <ParticleSparks />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[2]">
           <Image
-            src="/assets/logo.png" alt="" width={900} height={900}
+            src="/assets/logo.webp" alt="" width={900} height={900}
             className="object-contain w-[80vw] max-w-[900px]"
             style={{ animation: 'neonPulse 3s ease-in-out infinite' }}
             priority
@@ -72,12 +74,13 @@ export default function Home() {
         <div className="relative z-[3] max-w-7xl mx-auto px-6 pt-20 w-full grid lg:grid-cols-2 gap-12 items-center min-h-screen">
           <div>
             <p className="section-label mb-4">Lusaka, Zambia</p>
-            <h1 className="headline text-white mb-6" style={{ fontSize: 'clamp(4rem, 12vw, 9rem)' }}>
+            <PlotterLine />
+            <h1 className="headline headline-chrome mb-6" style={{ fontSize: 'clamp(4rem, 12vw, 9rem)' }}>
               THE<br />CUSTOM<br />ZM
             </h1>
             <p className="text-[#E0E0E0] text-lg font-medium mb-10">
               PRECISION CRAFTED.{' '}
-              <em className="text-[#00AAFF] not-italic">PERSONALLY YOURS.</em>
+              <em className="text-[var(--steel-bright)] not-italic">PERSONALLY YOURS.</em>
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a href={WA_LINKS.general} target="_blank" rel="noopener noreferrer" className="btn-primary">
@@ -91,7 +94,7 @@ export default function Home() {
           <div className="hidden lg:flex items-center justify-center">
             <div
               className="relative w-full max-w-md aspect-video neon-border overflow-hidden"
-              style={{ animation: 'floatUp 5s ease-in-out infinite', filter: 'drop-shadow(0 20px 60px rgba(0,170,255,0.3))' }}
+              style={{ animation: 'floatUp 5s ease-in-out infinite', filter: 'drop-shadow(0 20px 60px rgba(157,184,207,0.35))' }}
             >
               <Image src={LAPTOP_HERO_IMAGE} alt="Custom laptop wrap Lusaka Zambia" fill className="object-cover" priority />
             </div>
@@ -106,7 +109,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <p className="section-label text-center mb-4">What We Do</p>
-            <h2 className="headline text-center text-white mb-16" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
+            <PlotterLine center />
+            <h2 className="headline headline-chrome text-center mb-16" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
               THREE WAYS TO STAND OUT
             </h2>
           </ScrollReveal>
@@ -114,16 +118,16 @@ export default function Home() {
             {SERVICE_CARDS.map((card, i) => (
               <ScrollReveal key={card.title} delay={i * 0.1}>
                 <div className="group neon-border bg-[#141414] overflow-hidden transition-all duration-300 hover:-translate-y-2">
-                  <div className="relative aspect-video overflow-hidden">
+                  <WrapReveal className="relative aspect-video">
                     <Image src={card.img} alt={card.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />
-                    <span className="absolute top-4 right-4 text-xs font-semibold text-[#00AAFF] bg-[#0A0A0A]/80 px-3 py-1 tracking-widest uppercase">
+                    <span className="absolute top-4 right-4 text-xs font-semibold text-[var(--steel-bright)] bg-[#0A0A0A]/80 px-3 py-1 tracking-widest uppercase">
                       {card.from}
                     </span>
-                  </div>
+                  </WrapReveal>
                   <div className="p-6">
-                    <h3 className="headline text-white text-2xl mb-1">{card.title}</h3>
-                    <p className="text-[#00AAFF] text-sm font-semibold mb-3">{card.sub}</p>
+                    <h3 className="headline headline-chrome text-2xl mb-1">{card.title}</h3>
+                    <p className="text-[var(--steel-bright)] text-sm font-semibold mb-3">{card.sub}</p>
                     <p className="text-[#888] text-sm leading-relaxed mb-6">{card.desc}</p>
                     <a href={card.waLink} target="_blank" rel="noopener noreferrer"
                       className="btn-primary text-xs py-3 w-full text-center block">
@@ -142,7 +146,8 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
             <p className="section-label text-center mb-4">The Transformation</p>
-            <h2 className="headline text-center text-white mb-12" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
+            <PlotterLine center />
+            <h2 className="headline headline-chrome text-center mb-12" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
               SEE THE DIFFERENCE
             </h2>
           </ScrollReveal>
@@ -162,7 +167,8 @@ export default function Home() {
       <section className="py-20 bg-[#0A0A0A] overflow-hidden">
         <ScrollReveal>
           <p className="section-label text-center mb-4">Our Work</p>
-          <h2 className="headline text-center text-white mb-12" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
+          <PlotterLine center />
+          <h2 className="headline headline-chrome text-center mb-12" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
             OUR WORK SPEAKS
           </h2>
         </ScrollReveal>
@@ -180,7 +186,8 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <p className="section-label text-center mb-4">Client Stories</p>
-            <h2 className="headline text-center text-white mb-16" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
+            <PlotterLine center />
+            <h2 className="headline headline-chrome text-center mb-16" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
               WHAT LUSAKA SAYS
             </h2>
           </ScrollReveal>
@@ -190,7 +197,7 @@ export default function Home() {
                 <div className="neon-border bg-[#141414] p-8">
                   <p className="text-[#E0E0E0] text-sm leading-relaxed mb-6 italic">&ldquo;{t.quote}&rdquo;</p>
                   <p className="text-white font-semibold text-sm">{t.name}</p>
-                  <p className="text-[#00AAFF] text-xs tracking-widest uppercase mt-1">{t.item}</p>
+                  <p className="text-[var(--steel-bright)] text-xs tracking-widest uppercase mt-1">{t.item}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -202,8 +209,8 @@ export default function Home() {
       <section className="py-24 px-6 bg-[#0A0A0A] text-center">
         <div className="max-w-3xl mx-auto">
           <ScrollReveal>
-            <h2 className="headline text-white mb-8" style={{ fontSize: 'clamp(3rem, 8vw, 7rem)' }}>
-              READY TO<br /><span className="text-[#00AAFF]">STAND OUT?</span>
+            <h2 className="headline headline-chrome mb-8" style={{ fontSize: 'clamp(3rem, 8vw, 7rem)' }}>
+              READY TO<br /><span className="text-[var(--steel-bright)]">STAND OUT?</span>
             </h2>
             <a href={WA_LINKS.general} target="_blank" rel="noopener noreferrer"
               className="btn-primary text-base py-5 px-12">

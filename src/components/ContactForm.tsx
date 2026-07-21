@@ -1,7 +1,5 @@
 'use client'
 
-import { WA_LINKS } from '@/lib/constants'
-
 export default function ContactForm() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -21,11 +19,11 @@ export default function ContactForm() {
         <div>
           <label className="section-label block mb-2">Your Name</label>
           <input name="name" required placeholder="Your name"
-            className="w-full bg-[#0A0A0A] border border-[rgba(0,170,255,0.2)] text-white px-4 py-3 text-sm focus:outline-none focus:border-[#00AAFF] transition-colors placeholder-[#444]" />
+            className="w-full bg-[#0A0A0A] border border-[rgba(157,184,207,0.2)] text-white px-4 py-3 text-sm focus:outline-none focus:border-[var(--edge)] transition-colors placeholder-[#444]" />
         </div>
         <div>
           <label className="section-label block mb-2">Service</label>
-          <select name="service" className="w-full bg-[#0A0A0A] border border-[rgba(0,170,255,0.2)] text-white px-4 py-3 text-sm focus:outline-none focus:border-[#00AAFF] transition-colors">
+          <select name="service" className="w-full bg-[#0A0A0A] border border-[rgba(157,184,207,0.2)] text-white px-4 py-3 text-sm focus:outline-none focus:border-[var(--edge)] transition-colors">
             <option value="a custom laptop wrap">Laptop Wrap</option>
             <option value="a custom phone cover">Phone Cover</option>
             <option value="a portrait print">Portrait Print</option>
@@ -34,7 +32,7 @@ export default function ContactForm() {
         <div>
           <label className="section-label block mb-2">Details</label>
           <textarea name="message" rows={4} placeholder="Your laptop model / phone model / portrait size..."
-            className="w-full bg-[#0A0A0A] border border-[rgba(0,170,255,0.2)] text-white px-4 py-3 text-sm focus:outline-none focus:border-[#00AAFF] transition-colors resize-none placeholder-[#444]" />
+            className="w-full bg-[#0A0A0A] border border-[rgba(157,184,207,0.2)] text-white px-4 py-3 text-sm focus:outline-none focus:border-[var(--edge)] transition-colors resize-none placeholder-[#444]" />
         </div>
         <button type="submit" className="btn-primary w-full text-center">
           Send via WhatsApp &rarr;

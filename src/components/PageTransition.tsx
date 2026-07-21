@@ -15,7 +15,7 @@ export default function PageTransition() {
   if (!visible) return null
   return (
     <div
-      className="fixed top-0 left-0 right-0 h-[3px] z-[9999] bg-[#00AAFF]"
+      className="fixed top-0 left-0 right-0 h-[3px] z-[9999] bg-[var(--edge)]"
       style={{ animation: 'lineTransition 0.6s ease forwards' }}
       aria-hidden="true"
     />

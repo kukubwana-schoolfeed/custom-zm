@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 import ScrollReveal from '@/components/ScrollReveal'
 import { WA_LINKS } from '@/lib/constants'
+import PlotterLine from '@/components/PlotterLine'
+import WrapReveal from '@/components/WrapReveal'
 
 export const metadata: Metadata = {
   title: 'About The Custom ZM — Lusaka Zambia Custom Studio | The Custom ZM',
@@ -32,13 +33,14 @@ export default function AboutPage() {
         <div className="absolute inset-0 z-[0]">
           <div
             className="absolute inset-0"
-            style={{ background: 'radial-gradient(ellipse at center, rgba(0,170,255,0.08) 0%, transparent 70%)' }}
+            style={{ background: 'radial-gradient(ellipse at center, rgba(157,184,207,0.08) 0%, transparent 70%)' }}
           />
         </div>
         <div className="relative z-[3] max-w-7xl mx-auto px-6 pt-32 w-full">
           <p className="section-label mb-4">Chester House · Lusaka, Zambia</p>
-          <h1 className="headline text-white mb-6" style={{ fontSize: 'clamp(3rem, 10vw, 8rem)' }}>
-            BUILT IN LUSAKA.<br /><span className="text-[#00AAFF]">BUILT FOR LUSAKA.</span>
+          <PlotterLine />
+          <h1 className="headline headline-chrome mb-6" style={{ fontSize: 'clamp(3rem, 10vw, 8rem)' }}>
+            BUILT IN LUSAKA.<br /><span className="text-[var(--steel-bright)]">BUILT FOR LUSAKA.</span>
           </h1>
           <p className="text-[#E0E0E0] text-lg max-w-2xl leading-relaxed">
             The Custom ZM was built on a simple belief: Lusaka deserves premium customisation. Not cheap stickers. Not generic prints.
@@ -54,7 +56,8 @@ export default function AboutPage() {
             <ScrollReveal>
               <div>
                 <p className="section-label mb-4">Our Story</p>
-                <h2 className="headline text-white mb-8" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
+                <PlotterLine />
+                <h2 className="headline headline-chrome mb-8" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
                   THE VISION
                 </h2>
                 <div className="space-y-5 text-[#888] text-sm leading-relaxed">
@@ -71,7 +74,7 @@ export default function AboutPage() {
                     Laptop wraps precision-cut to your exact model. Sublimation phone covers so vivid they stop traffic.
                     Portrait prints in sizes big enough to command any wall. All of it custom. All of it yours.
                   </p>
-                  <p className="text-[#00AAFF] font-semibold italic text-base">
+                  <p className="text-[var(--steel-bright)] font-semibold italic text-base">
                     Precision Crafted. Personally Yours.
                   </p>
                 </div>
@@ -81,14 +84,14 @@ export default function AboutPage() {
             <ScrollReveal delay={0.2}>
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  '/assets/laptop/custom-laptop-wrap-lusaka-zambia-15.jpg',
-                  '/assets/potraits/portrait-print-lusaka-zambia%20(3).jpg',
-                  '/assets/cover/custom-phone-cover-lusaka-zambia%20(7).jpg',
-                  '/assets/laptop/custom-laptop-wrap-lusaka-zambia-32.jpg',
+                  '/assets/laptop/custom-laptop-wrap-lusaka-zambia-15.webp',
+                  '/assets/portraits/portrait-print-lusaka-zambia-03.webp',
+                  '/assets/cover/custom-phone-cover-lusaka-zambia-07.webp',
+                  '/assets/laptop/custom-laptop-wrap-lusaka-zambia-32.webp',
                 ].map((src, i) => (
-                  <div key={i} className="relative aspect-square overflow-hidden neon-border">
+                  <WrapReveal key={i} className="relative aspect-square neon-border">
                     <Image src={src} alt="The Custom ZM work" fill className="object-cover" />
-                  </div>
+                  </WrapReveal>
                 ))}
               </div>
             </ScrollReveal>
@@ -101,7 +104,8 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <p className="section-label text-center mb-4">What Drives Us</p>
-            <h2 className="headline text-center text-white mb-16" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
+            <PlotterLine center />
+            <h2 className="headline headline-chrome text-center mb-16" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
               OUR VALUES
             </h2>
           </ScrollReveal>
@@ -109,7 +113,7 @@ export default function AboutPage() {
             {VALUES.map((value, i) => (
               <ScrollReveal key={value.title} delay={i * 0.15}>
                 <div className="neon-border bg-[#141414] p-10 text-center">
-                  <h3 className="headline text-[#00AAFF] mb-4" style={{ fontSize: '2.5rem' }}>{value.title}</h3>
+                  <h3 className="headline headline-chrome mb-4" style={{ fontSize: '2.5rem' }}>{value.title}</h3>
                   <p className="text-[#888] text-sm leading-relaxed">{value.desc}</p>
                 </div>
               </ScrollReveal>
@@ -123,7 +127,8 @@ export default function AboutPage() {
         <div className="max-w-5xl mx-auto text-center">
           <ScrollReveal>
             <p className="section-label mb-4">Where To Find Us</p>
-            <h2 className="headline text-white mb-8" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
+            <PlotterLine />
+            <h2 className="headline headline-chrome mb-8" style={{ fontSize: 'clamp(2.5rem, 6vw, 5rem)' }}>
               BASED IN LUSAKA
             </h2>
             <div className="grid sm:grid-cols-3 gap-8 mb-12">
